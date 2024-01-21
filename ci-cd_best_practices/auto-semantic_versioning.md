@@ -4,11 +4,22 @@
 This details how to automate semantic versioning in Python repos using
 1. [python-semantic-release](https://github.com/python-semantic-release/python-semantic-release)
 2. [semantic-prs](https://github.com/Ezard/semantic-prs)
-3. pre-commit?????
+3. pre-commit????? [](https://github.com/compilerla/conventional-pre-commit)
 
 ## method
-1. Setup Semantic PRs as per [the guide](https://github.com/Ezard/semantic-prs). Thisonly has to be done once for the whole repo. It will ensure that PRs use the required syntax for conventional commits.
-2. Install pre-commit hook
+1. Setup Semantic PRs as per [the guide](https://github.com/Ezard/semantic-prs). This only has to be done once for the whole repo. It will ensure that PRs use the required syntax for conventional commits.
+2. Install pre-commit hook using [conventional-pre-commit
+](https://github.com/compilerla/conventional-pre-commit) with the command `pre-commit install --hook-type commit-msg`.
+```yaml
+---
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.1.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: []
+```
+
 3. Install python-semantic-release using poetry `poetry add python-semantic-release`
 4. Configure the starting semantic version in `__init__.py` and `pyproject.toml`
 
@@ -114,6 +125,87 @@ env = "GH_TOKEN"
 [tool.semantic_release.publish]
 dist_glob_patterns = ["dist/*"]
 upload_to_vcs_release = true
+```
+
+### Example GHA publish pipeline
+```yaml
+on:
+    push:
+      branches:
+        - feature/setup-semvar-pipeline
+        - master
+    pull_request:
+      branches: [ main ]
+
+# TODO: insert linting checks & tests
+jobs:
+  build-test:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        python-version: ["3.8"]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: "poetry"
+
+    - name: Install dependencies
+      run: |
+        poetry install
+
+    # - name: Run tests
+    #   run: |
+    #     poetry run pytest
+
+  publish:
+    needs: ['build-test']
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && !contains(github.event.head_commit.message, 'chore(release):')
+    name: upload release to PyPI
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        python-version: ["3.8"]
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install dependencies & build package
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "poetry"
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Prepare package for release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          poetry run semantic-release version
+          poetry run semantic-release publish
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
 ```
 
 ## Links
