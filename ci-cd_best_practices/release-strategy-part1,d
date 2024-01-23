@@ -62,6 +62,8 @@ Some examples of breaking changes might be:
 - Allowing the schema type of a property be different in difference circumstances, i.e. returning an int or a string, just don’t do this. While it is possible to document the union types, it's a huge headache for development teams to deal with.
 - Requiring a previously optional property or requiring a new header to continue having previous functionality. Clients not sending the header or the property will now get a 400 or 422 back on their response, instead of the previous 2xx.
 
+A potentional method to figure out if a breaking change has been made is the idea to detect unmarked breaking changes by running the previous version's test suite on a new version. If the new version fails the old version's tests, it's probably a breaking change. [See Stephan Bönnemann talk](https://www.youtube.com/watch?v=tc2UgG5L7WM)
+
 ## Branching strategies
 1. [Git Branching strategies comparison
 ](https://www.opsatscale.com/articles/Git-branching-strategies-comparison/)
