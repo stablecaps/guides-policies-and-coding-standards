@@ -1,4 +1,5 @@
-# Branch & Conventional commits
+
+# Release strategy (research) 1
 
 ## Conventional commits
 [CC specification](https://www.conventionalcommits.org/en/v1.0.0/)
