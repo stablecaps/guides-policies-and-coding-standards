@@ -21,10 +21,16 @@ Unfortunately many of these rules can only be applied at the repo level as a Git
 
 Use Github Flow with feature-branching strategy and squash commits.
 
-![GitHub Flow](./images/git-flow.png =330x522)
-
 <img src="images/git-flow.png" alt="GitHub Flow" width="330" height="522"/>
 
 1. [PSR Discussion](https://github.com/python-semantic-release/python-semantic-release/issues/816)
 2. [githubflow.github.io](https://githubflow.github.io/)
 3. [git-branch-strategy](https://www.gitkraken.com/learn/git/best-practices/git-branch-strategy)
+
+
+## PSR & Tagging
+
+See [PSR Discussion](https://github.com/python-semantic-release/python-semantic-release/issues/816)
+
+Image from above discussion:
+<img src="images/tagging_example.png" alt="Tagging example" width="330" height="522"/>
