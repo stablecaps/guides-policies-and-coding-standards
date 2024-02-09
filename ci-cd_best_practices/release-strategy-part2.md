@@ -21,7 +21,9 @@ Unfortunately many of these rules can only be applied at the repo level as a Git
 
 Use Github Flow with feature-branching strategy and squash commits.
 
-![](./images/git-flow.svg =330x522)
+![GitHub Flow: Pros & Cons](./images/git-flow.svg =330x522)
+
+<img src="./images/git-flow.svg" alt="drawing" width="330" height="522"/>
 
 1. [PSR Discussion](https://github.com/python-semantic-release/python-semantic-release/issues/816)
 2. [githubflow.github.io](https://githubflow.github.io/)
