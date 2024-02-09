@@ -23,6 +23,16 @@ Use Github Flow with feature-branching strategy and squash commits.
 
 <img src="images/git-flow.png" alt="GitHub Flow" width="330" height="522"/>
 
+#### GitHub Flow Considerations
+While working with the GitHub flow branching strategy, there are six principles you should adhere to to ensure you maintain good code.
+
+1. Any code in the main branch should be deployable.
+2. Create new descriptively-named branches off the main branch for new work, such as feature/add-new-payment-types.
+3. Commit new work to your local branches and regularly push work to the remote.
+4. To request feedback or help, or when you think your work is ready to merge into the main branch, open a pull request.
+5. After your work or feature has been reviewed and approved, it can be merged into the main branch.
+6. Once your work has been merged into the main branch, it should be deployed immediately.
+
 #### The Benefits of GitHub Flow
 1. Of the three Git branch strategies we cover in this post, GitHub flow is the most simple.
 2. Because of the simplicity of the workflow, this Git branching strategy allows for Continuous Delivery and Continuous Integration.
