@@ -15,3 +15,14 @@ Unfortunately many of these rules can only be applied at the repo level as a Git
 2. Set squash merge to take PR title & description
 2. protect master and release branches
     - Require PR with approval
+
+
+## Branching strategy
+
+Use Github Flow with feature-branching strategy and squash commits.
+
+![GitHub Flow: Pros & Cons](ci-cd_best_practices/images/git-flow.svg)
+
+1. [PSR Discussion](https://github.com/python-semantic-release/python-semantic-release/issues/816)
+2. [githubflow.github.io](https://githubflow.github.io/)
+3. [git-branch-strategy](https://www.gitkraken.com/learn/git/best-practices/git-branch-strategy)
