@@ -33,4 +33,4 @@ Use Github Flow with feature-branching strategy and squash commits.
 See [PSR Discussion](https://github.com/python-semantic-release/python-semantic-release/issues/816)
 
 Image from above discussion:
-<img src="images/tagging_example.png" alt="Tagging example" width="1058" height="653"/>
+<img src="images/tagging_example.png" alt="Tagging example" width="793" height="489"/>
