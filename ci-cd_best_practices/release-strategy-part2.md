@@ -2,7 +2,7 @@
 
 ## Overview
 
-Unfortunately many of these rules can only be applied at the repo level as a Github enterorise subscription is required to do it at the org level. Thus, it is of interest to make cookie cutter projects with all these setting enabled.
+Unfortunately many of these rules can only be applied at the repo level as a Github enterprise subscription is required to do it at the org level. Thus, it is of interest to make cookie cutter projects with all these setting enabled.
 
 
 ## Squash merge
@@ -24,7 +24,7 @@ Use Github Flow with feature-branching strategy and squash commits.
 <img src="images/git-flow.png" alt="GitHub Flow" width="330" height="522"/>
 
 #### GitHub Flow Considerations
-While working with the GitHub flow branching strategy, there are six principles you should adhere to to ensure you maintain good code.
+While working with the GitHub flow branching strategy, there are [six principles](https://githubflow.github.io/) you should adhere to to ensure you maintain good code.
 
 1. Any code in the main branch should be deployable.
 2. Create new descriptively-named branches off the main branch for new work, such as feature/add-new-payment-types.
@@ -46,6 +46,8 @@ While working with the GitHub flow branching strategy, there are six principles 
 1. [PSR Discussion](https://github.com/python-semantic-release/python-semantic-release/issues/816)
 2. [githubflow.github.io](https://githubflow.github.io/)
 3. [git-branch-strategy](https://www.gitkraken.com/learn/git/best-practices/git-branch-strategy)
+4. [GitHub—tags and releases](https://practicalseries.com/1002-vcs/09-06-github.html)
+5. [Merging tags?](https://stackoverflow.com/a/63586361)
 
 
 ## PSR & Tagging
